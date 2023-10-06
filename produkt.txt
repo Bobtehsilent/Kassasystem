@@ -1,0 +1,4 @@
+301 banan 25.0
+500 Ostron 500.0
+3 Bulle 9.95
+banan 301 25.0
