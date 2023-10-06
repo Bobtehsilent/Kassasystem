@@ -47,6 +47,7 @@ class Köp:
     def lägg_vara_i_korgen(self, lager):
         köpval = input("Gör ditt val (1-2): ")
         if köpval == "1":
+            nuvarande_köp = Köp()
             while True:
                 print("<produktkod><spacebar><antal>")
                 produkt_input = input("Skriv in produktkod och antal som ovan eller PAY för att betala: ").strip().upper()# noqa: E501
@@ -65,8 +66,9 @@ class Köp:
                     print("Felaktigt Format. Försök igen")
                     continue
                 produkt_kod, antal = delar
-                produkt_kod = int(produkt_kod)
+                produkt_kod = produkt_kod
                 produkt = lager.produkter.get(produkt_kod)
+                print(produkt)
                 if produkt:
                     try:
                         int(produkt_kod)
@@ -199,12 +201,13 @@ def main():
         print("-"*40)
         val = input("Gör ditt val (1-4): ")
         if val == "1":
-            nuvarande_köp = Köp()
+            nuvarande_köp = None
             while True:
                 print("-"*40)
                 print("Handlingsmeny")
                 print("1. Lägg till en vara\n2. Tillbaks till huvudmenyn")
                 print("-"*40)
+                nuvarande_köp = Köp()
                 nuvarande_köp.lägg_vara_i_korgen(lager)
         elif val == "2":
             while True:
